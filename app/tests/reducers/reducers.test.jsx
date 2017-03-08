@@ -9,7 +9,7 @@ describe('Reducers', () => {
     it('should set search text', () => {
       var action = {
         type: types.SET_SEARCH_TEXT,
-        searchText: 'Any search text'
+        searchText: 'Any Search Text'
       };
       var res = reducers.searchTextReducer(df(''), df(action));
       expect(res).toEqual(action.searchText);
@@ -23,6 +23,47 @@ describe('Reducers', () => {
       };
       var res = reducers.showCompletedReducer(df(false), df(action));
       expect(res).toEqual(true);
+    })
+  })
+
+  describe('todosReducer', () => {
+    it('should add new todo', () => {
+      var action = {
+        type: types.ADD_TODO,
+        text: 'Any Todo Text'
+      };
+      var res = reducers.todosReducer(df([]), df(action));
+      expect(res.length).toEqual(1);
+      expect(res[0].text).toEqual(action.text);
+    })
+
+    it('should toggle completed and set completedAt', () => {
+      var initialState = [
+        {
+          id: 1,
+          text: 'any text 1',
+          completed: false,
+          createdAt: 45,
+          completedAt: undefined
+        },
+        {
+          id: 2,
+          text: 'any text 2',
+          completed: false,
+          createdAt: 97,
+          completedAt: undefined
+        }
+      ];
+
+      var action = {
+        type: types.TOGGLE_TODO,
+        id: 1
+      };
+
+      var res = reducers.todosReducer(df(initialState), df(action));
+
+      expect(res[0].completed).toEqual(true);
+      expect(res[0].completedAt).toBeA('number');
     })
   })
 })
