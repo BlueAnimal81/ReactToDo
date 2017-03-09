@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var config = require('config');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -39,7 +40,8 @@ module.exports = {
       applicationStyles: 'app/styles/app.scss',
       actions: 'app/actions/actions.jsx',
       reducers: 'app/reducers/reducers.jsx',
-      configureStore: 'app/store/configureStore.jsx'
+      configureStore: 'app/store/configureStore.jsx',
+      config: path.join(__dirname, 'config', process.env.NODE_ENV)
     },
     extensions: ['', '.js', '.jsx']
   },
