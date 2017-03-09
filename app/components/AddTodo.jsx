@@ -2,8 +2,13 @@ var React = require('react');
 var {connect} = require('react-redux');
 var actions = require('actions');
 
-export var AddTodo = React.createClass({
-  onFormSubmit: function(e) {
+export class AddTodo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+  }
+
+  onFormSubmit(e) {
     e.preventDefault();
 
     var {dispatch} = this.props;
@@ -15,9 +20,9 @@ export var AddTodo = React.createClass({
     } else {
       this.refs.todoText.focus();
     }
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <div className="container__footer">
         <form onSubmit={this.onFormSubmit}>
@@ -27,6 +32,6 @@ export var AddTodo = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default connect()(AddTodo);

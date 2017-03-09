@@ -6,8 +6,8 @@ import TodoList from 'TodoList';
 import AddTodo from 'AddTodo';
 import TodoSearch from 'TodoSearch';
 
-var TodoApp = React.createClass({
-  render: function() {
+class TodoApp extends React.Component {
+  render() {
     return (
       <div>
         <h1 className="page-title">Todo App</h1>
@@ -24,6 +24,6 @@ var TodoApp = React.createClass({
       </div>
     );
   }
-});
+}
 
 module.exports = TodoApp;
