@@ -1,12 +1,20 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var {Provider} = require('react-redux');
-var {Route, Router, IndexRoute, hashHistory} = require('react-router');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import {hashHistory} from 'react-router';
+import firebase from 'app/firebase';
 
-var actions = require('actions');
+import * as actions from 'actions';
 var store = require('configureStore').configure();
-import Login from 'app/components/Login';
-import TodoApp from 'TodoApp';
+import Router from 'app/router/'
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    hashHistory.push('/todos');
+  } else {
+    hashHistory.push('/');
+  }
+});
 
 store.dispatch(actions.startAddTodos());
 
@@ -16,14 +24,11 @@ $(document).foundation();
 // App css
 require('style!css!sass!applicationStyles');
 
+
+
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={hashHistory}>
-      <Route path='/'>
-        <IndexRoute component={Login} />
-        <Route path='todos' component={TodoApp} />
-      </Route>
-    </Router>
+    {Router}
   </Provider>,
   document.getElementById('app')
 );
