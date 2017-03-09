@@ -11,10 +11,6 @@ store.subscribe(() => {
   console.log('New state', store.getState());
 })
 
-store.dispatch(actions.addTodo('Clean the car'));
-store.dispatch(actions.setSearchText('Clean'));
-store.dispatch(actions.toggleShowCompleted());
-
 // Load foundation.
 $(document).foundation();
 
