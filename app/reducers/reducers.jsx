@@ -3,6 +3,19 @@ var moment = require('moment');
 
 import * as types from 'app/actions/types';
 
+export var authReducer = (state = {}, action) => {
+  switch (action.type) {
+    case types.LOGIN:
+      return {
+        uid: action.uid
+      };
+    case types.LOGOUT:
+        return {};
+    default:
+      return state;
+  }
+}
+
 export var searchTextReducer = (state = '', action) => {
   switch (action.type) {
     case types.SET_SEARCH_TEXT:

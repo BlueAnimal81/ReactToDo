@@ -88,6 +88,13 @@ export var startToggleTodo = (id, completed) => {
   }
 }
 
+export var login = (uid) => {
+  return {
+    type: types.LOGIN,
+    uid
+  }
+}
+
 export var startLogin = () => {
   return (dispatch, getState) => {
     return firebase.auth().signInWithPopup(githubProvider).then(
@@ -98,6 +105,12 @@ export var startLogin = () => {
         console.log('Unable to auth', e);
       }
     )
+  }
+}
+
+export var logout = () => {
+  return {
+    type: types.LOGOUT
   }
 }
 
