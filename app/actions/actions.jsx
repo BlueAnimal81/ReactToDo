@@ -14,6 +14,13 @@ export var addTodo = (text) => {
   }
 }
 
+export var addTodos = (todos) => {
+  return {
+    type: types.ADD_TODOS,
+    todos
+  }
+}
+
 export var toggleShowCompleted = () => {
   return {
     type: types.TOGGLE_SHOW_COMPLETED
