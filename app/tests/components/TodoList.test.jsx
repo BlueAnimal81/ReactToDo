@@ -3,7 +3,6 @@ var ReactDOM = require('react-dom');
 var {Provider} = require('react-redux');
 var TestUtils = require('react-addons-test-utils');
 var expect = require('expect');
-var $ = require('jQuery');
 
 import {configure} from 'configureStore';
 import ConnectedTodoList, {TodoList} from 'TodoList';
