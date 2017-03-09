@@ -1,6 +1,7 @@
 var uuid = require('node-uuid');
 var moment = require('moment');
 
+import * as actions from 'actions';
 import * as types from 'app/actions/types';
 
 export var authReducer = (state = {}, action) => {
@@ -57,6 +58,8 @@ export var todosReducer = (state = [], action) => {
         ...state,
         ...action.todos
       ];
+    case types.LOGOUT:
+      return [];
     default:
       return state;
   }
