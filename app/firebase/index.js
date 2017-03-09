@@ -1,12 +1,12 @@
 import firebase from 'firebase';
 
-try {  
+try {
   var config = {
-    apiKey: "AIzaSyAJ2FhIZr1HjN9lg70nbGWnBe0h4A_26HQ",
-    authDomain: "react-todo-app-23567.firebaseapp.com",
-    databaseURL: "https://react-todo-app-23567.firebaseio.com",
-    storageBucket: "react-todo-app-23567.appspot.com",
-    messagingSenderId: "335314579496"
+    apiKey: process.env.API_KEY,
+    authDomain:  process.env.AUTH_DOMAIN,
+    databaseURL:  process.env.DATABASE_URL,
+    storageBucket:  process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.MESSAGING_SENDER_ID
   };
 
   firebase.initializeApp(config);
